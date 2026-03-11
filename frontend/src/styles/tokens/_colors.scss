@@ -1,0 +1,22 @@
+:root {
+--bg-0: #121A33;   /* фон страницы (индиго) */
+  --bg-1: #18224A;   /* панели */
+  --bg-2: #1E2B5C;   /* карточки/элементы */
+  --stroke: rgba(255, 255, 255, 0.12);
+  /* cards */
+  --stroke: rgba(255, 255, 255, 0.08);
+
+  /* Text */
+  --text-0: rgba(255, 255, 255, 0.92);
+  --text-1: rgba(255, 255, 255, 0.72);
+  --text-2: rgba(255, 255, 255, 0.52);
+
+  /* Accent (spark) */
+  --spark-0: #4da3ff;
+  --spark-1: #8b8cff;
+  --spark-2: #6e5cff;
+
+  /* Warm accent (notifications) */
+  --warm-0: #ffd166;
+  --warm-1: #ffb347;
+}
