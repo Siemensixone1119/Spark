@@ -16,9 +16,11 @@ const chats = ref([
     updatedAt: 1771760599,
     messages: [
       { id: 1, author: 'other', text: 'Ты где? 🙂' },
-      { id: 2, author: 'me', text: 'Сейчас подойду' },
+      { id: 2, author: 'other', text: 'Ты где? 🙂' },
+      { id: 3, author: 'me', text: 'Сейчас подойду' },
+      { id: 4, author: 'me', text: 'Сейчас подойду' },
     ],
-    avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 2,
@@ -31,7 +33,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Созвон в 14:00, ок?' },
       { id: 2, author: 'me', text: 'Да, буду' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 3,
@@ -44,7 +46,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Скинь конспект, пожалуйста' },
       { id: 2, author: 'me', text: 'Ок, сейчас' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 4,
@@ -57,7 +59,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Не забудь купить хлеб' },
       { id: 2, author: 'me', text: 'Хорошо!' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 5,
@@ -70,7 +72,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Зайди вечером, покажу новую пушку' },
       { id: 2, author: 'me', text: 'Давай после 20:00' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
 
   {
@@ -84,7 +86,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Хочешь кофе?' },
       { id: 2, author: 'me', text: 'Дааа 🙂' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 7,
@@ -97,7 +99,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Залейте фиксы в develop' },
       { id: 2, author: 'me', text: 'Сейчас пушну' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 8,
@@ -110,7 +112,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Ок, жду демо' },
       { id: 2, author: 'me', text: 'Отправлю сегодня' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 9,
@@ -123,7 +125,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Как ты?' },
       { id: 2, author: 'me', text: 'Всё хорошо ❤️' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 10,
@@ -136,7 +138,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Позвони, когда будешь свободна' },
       { id: 2, author: 'me', text: 'Ок, вечером' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
 
   {
@@ -150,7 +152,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Курьер будет через 15 минут' },
       { id: 2, author: 'me', text: 'Ок, жду' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 12,
@@ -163,7 +165,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Спасибо, всё тихо 🙂' },
       { id: 2, author: 'me', text: 'Отлично!' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 13,
@@ -176,7 +178,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Тренировка перенесена на завтра' },
       { id: 2, author: 'me', text: 'Поняла' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 14,
@@ -189,7 +191,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Подтвердите операцию' },
       { id: 2, author: 'me', text: 'Не я делала' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 15,
@@ -202,7 +204,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Оплата ЖКХ прошла' },
       { id: 2, author: 'me', text: 'Супер' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
 
   {
@@ -216,7 +218,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Можно заменить картинку в хиро?' },
       { id: 2, author: 'me', text: 'Да, пришлите вариант' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 17,
@@ -229,7 +231,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Заявка закрыта' },
       { id: 2, author: 'me', text: 'Спасибо' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 18,
@@ -242,7 +244,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Скинь палитру и шрифты' },
       { id: 2, author: 'me', text: 'Ок, сейчас соберу' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 19,
@@ -255,7 +257,7 @@ const chats = ref([
       { id: 1, author: 'other', text: 'Не забудь про отчёт' },
       { id: 2, author: 'me', text: 'Приняла' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
   {
     id: 20,
@@ -268,7 +270,7 @@ const chats = ref([
       { id: 1, author: 'me', text: 'Nginx: location ^~ /uploads/' },
       { id: 2, author: 'me', text: 'Unix time: seconds -> *1000' },
     ],
-    // avatarUrl: `${API_HOST}/uploads/avatars/test.png`,
+    avatarUrl: `${API_HOST}/uploads/avatars/test.jpg`,
   },
 ]);
 

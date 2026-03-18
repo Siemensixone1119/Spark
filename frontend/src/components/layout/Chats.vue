@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 const props = defineProps({
   chat: Object,
 });
@@ -31,21 +31,54 @@ const autoGrow = (e) => {
   el.style.height = next + 'px';
   el.style.overflowY = (el.scrollHeight > MAX_H) ? 'auto' : 'hidden';
 };
+
+const groupedMessages = computed(() => {
+  if (!props.chat?.messages?.length) return [];
+  const groups = [];
+
+  props.chat.messages.forEach(message => {
+    const lastGroup = groups[groups.length - 1];
+
+    if (!lastGroup || message.author !== lastGroup.author) {
+      groups.push({
+        author: message.author,
+        messages: [message]
+      })
+      return
+    }
+    lastGroup.messages.push(message);
+  });
+  return groups;
+})
 </script>
-
 <template>
-
   <div class="chat">
     <div class="chat-header">
-      <h1>{{ props.chat.title }}</h1>
+      <h1 class="chat-header__title">{{ props.chat.title }}</h1>
     </div>
     <div v-if="props.chat.messages.length === 0" class="textContent">
       <span>Начните общение прямо сейчас!</span>
     </div>
     <div v-else class="chat-messages">
-      <ul>
-        <li class="message" v-for="message in props.chat.messages" :key="message.id">
-          <p>{{ message.text }}</p>
+      <ul class="message-groups">
+        <li class="message-group" v-for="group in groupedMessages" :key="group.messages[0].id" :class="{ 'message-group--me': group.author === 'me' }">
+          <div class="message-group__avatar" :style="{ backgroundImage: `url(${props.chat.avatarUrl})` }"></div>
+          <div class="message-group__body">
+            <ul class="message-group__list">
+              <li class="message-group__item" v-for="message in group.messages" :key="message.id">
+                <div class="message-bubble">
+                  <span class="message-bubble__text">{{ message.text }}</span>
+                  <svg width="9" height="17" class="svg-appendix">
+                    <g>
+                      <path
+                        d="M3 17h6V0c-.193 2.84-.876 5.767-2.05 8.782-.904 2.325-2.446 4.485-4.625 6.48A1 1 0 003 17z">
+                      </path>
+                    </g>
+                  </svg>
+                </div>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -59,6 +92,98 @@ const autoGrow = (e) => {
 </template>
 
 <style lang="scss" scoped>
+.message-bubble {
+  width: fit-content;
+  padding: var(--space-4) var(--space-6);
+  border-radius: 18px;
+  background: #1F2B50;
+  max-width: 90%;
+  position: relative;
+  border-bottom-left-radius: 0;
+  max-width: 60%;
+  line-height: 1.25;
+
+  &__text {
+    word-break: break-word;
+  }
+}
+
+.message-group {
+  &__body {
+    width: 100%;
+  }
+
+  &__avatar {
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 50%;
+    background-size: contain;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__item:not(:last-child) {
+    .message-bubble {
+      border-bottom-left-radius: 8px;
+    }
+
+    .svg-appendix {
+      display: none;
+    }
+  }
+}
+
+.message-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 15px;
+  margin-top: 12px;
+
+  .svg-appendix {
+    fill: #1F2B50;
+    position: absolute;
+    bottom: 0;
+    left: -9px;
+    display: block;
+    transform: scaleX(1);
+  }
+}
+
+.message-group--me {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  .message-bubble {
+    margin-left: auto;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 0;
+    background: #7b7bde6b;
+
+    .svg-appendix {
+      right: -9px;
+      left: unset;
+      transform: scaleX(-1);
+      fill: #7b7bde6b;
+    }
+  }
+
+  .message-group__item:not(:last-child) {
+    .message-bubble {
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 18px;
+    }
+
+    .svg-appendix {
+      display: none;
+    }
+  }
+}
+
 .textContent {
   width: 100%;
   height: 100%;
@@ -73,14 +198,15 @@ const autoGrow = (e) => {
   height: 100%;
 }
 
-.message {
-  width: fit-content;
-  padding: var(--space-4) var(--space-6);
-  border-radius: 8px;
-  background: #1F2B50;
-  margin-top: 10px;
-  max-width: 100%;
-  text-align: justify;
+.chat-header {
+  margin: -15px;
+  padding: 15px;
+  margin-bottom: 0;
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+  }
 }
 
 .chat-messages {
@@ -127,8 +253,6 @@ const autoGrow = (e) => {
 
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
-
-    // scrollbar-gutter: stable;
   }
 
   &__input::-webkit-scrollbar {
